@@ -1,0 +1,6 @@
+Best commands 
+
+ls
+grep
+cat
+nano 
