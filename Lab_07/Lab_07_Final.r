@@ -5,7 +5,7 @@ FiboFunct <- function(number = 0, iterations = 10){
   fib[2] <- 1
   #This tells you if you have too few iterations
   if(iterations <= 3){
-    return("Dumbass, you need at least three iterations for a Fibonacci sequence")
+    return("You need at least three iterations for a Fibonacci sequence")
   }
   #This fills the vecotr with the number of iterations
   else{
@@ -24,15 +24,14 @@ FiboFunct(1,2)
 ExpGrowthFunct <- function(I = 2000, G = 12, r = .8, K = 10000){
   #This creates a vector for the population size to be stored in
   n <- rep(I,G)
-  #This creates a vector of all of the generation times
-  Gen_time <- seq(1,G)
   #This loop puts the values in the vector
-  for(t in seq(2, Gen_Time)){
+  for(t in seq(2,G)){
     n[t] <- n[t-1] + (r * n[t-1] * (K - n[t-1])/K)
   }
-  return(n)
   #This generates a plot
-  plot(Gen_time, n, xlab = "Generation", ylab = "Population")
+  Gen_Time <- seq(2,G)
+  plot(Gen_Time, n, xlab = "Generation", ylab = "Population")
+  return(n)
 }
 #Question 3
 #This makes the CSV file a variable
@@ -58,9 +57,9 @@ Matrix_Generator <- function(Matrix = AdjacencyMatrix, Number = 1){
   #This creates a counter variable for the loop
   x <- 1
   #This loop runs through all the columns
-  for(o in seq(1,N_Row)){
+  for(o in seq(1,N_Col)){
     #This loop runs through all of the rows
-    for(u in seq(1,N_Col)){
+    for(u in seq(1,N_Row)){
       #This determines if the value in question is in the rows
       if(Matrix[u,o] == Number){
         #This puts the position of the value in the column section
@@ -72,7 +71,8 @@ Matrix_Generator <- function(Matrix = AdjacencyMatrix, Number = 1){
       }
     }
   }
-  return(Adjacency) -> Adjacency_Matrix
+  return(Adjacency) 
 }
 Matrix_Generator()
+Matrix_Generator(Number = 0)
 
