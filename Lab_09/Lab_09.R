@@ -15,8 +15,8 @@ for(k in seq(1,length(Dates))){
 Dates_Times <- unclass(Dates_Time)
 #This loop makes the number of seconds that transpired relative to the first trap
 Dates_w <- rep(0, length(Dates_Time))
-for(i in seq(1, length(Dates))){
-  Dates_w[i] <- Dates_Times[i] - Dates_Times[1]
+for(i in seq(2, length(Dates))){
+  Dates_w[i-1] <- Dates_Times[i] - Dates_Times[i-1]
 }
 #This converts seconds to minutes
 Mins <- rep(0, length(Dates))
@@ -25,11 +25,13 @@ for(m in seq(1, length(Dates))){
 }
 #This puts the time in minites in the original data fram
 Cusack$DateTime <- Mins
-Difference <- rep(1,(1-length(Mins)))
 #This function calculates the time difference between two points 
-calctimedifference <- function(Time_Vector = Mins){
-  for(e in seq(1,length(Difference)))
-    Difference[e] <- Mins[e]-Mins[e-1]
+calctimedifference <- function(T1 = 2, T2 = 5){
+  Len <- (T2-T1)-1
+  Difference_Intervals <- rep(1,Len)
+  for(e in seq((T1+1),T2)){
+    Difference_Intervals[e] <- Mins[e] - Mins[e-1]
+  }
 }
 calctimedifference()
 #This function will generate a vector with all the intervals at which an animal was sighted during a specific season, position and placement
@@ -52,10 +54,11 @@ calc_time_difference = function(Species = "Elephant", Season = "D", Station = 1,
       }
     }    
   }
+  V <- 1
   Intervals <- rep(0,(X-1))
   for(d in position[2:X]){
     Interval[V] <- Cusack$DateTime[d] - Cusack$DateTime[d-1]
     V <- V + 1
   }    
 }
-calc_time_difference()
+
