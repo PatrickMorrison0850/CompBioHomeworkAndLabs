@@ -1,6 +1,13 @@
 Best commands 
 
 ls
+-Displays the content of the directory
+
 grep
+-Searches for a regular expression in a text file
+
 cat
+-Puts strings of text together
+
 nano 
+-opens a new or existing file (in some systems)
