@@ -15,7 +15,7 @@ FiboFunct <- function(number = 0, iterations = 10){
     return(fib)
   }  
 }
-FiboFunct(1,2)
+FiboFunct(0,5)
 #Question 2
 #I is the initial population
 #G is the number of generations
@@ -29,10 +29,11 @@ ExpGrowthFunct <- function(I = 2000, G = 12, r = .8, K = 10000){
     n[t] <- n[t-1] + (r * n[t-1] * (K - n[t-1])/K)
   }
   #This generates a plot
-  Gen_Time <- seq(2,G)
+  Gen_Time <- seq(1,G)
   plot(Gen_Time, n, xlab = "Generation", ylab = "Population")
   return(n)
 }
+ExpGrowthFunct()
 #Question 3
 #This makes the CSV file a variable
 AdjacencyMatrix <- read.csv("LargeAdjacencyMatrix.csv")
@@ -75,4 +76,3 @@ Matrix_Generator <- function(Matrix = AdjacencyMatrix, Number = 1){
 }
 Matrix_Generator()
 Matrix_Generator(Number = 0)
-
